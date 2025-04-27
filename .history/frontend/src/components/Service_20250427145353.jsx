@@ -1,0 +1,71 @@
+import React, { useState, useEffect, useRef } from 'react';
+import CountUp from "react-countup";
+import { useTheme } from "@/context/ThemeContext";
+
+const Service = () => {
+  const { theme } = useTheme();
+  const isDarkMode = theme === 'dark';
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          // Once visible, disconnect the observer to prevent re-triggering
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.2, // Trigger when at least 20% of the element is visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.disconnect();
+      }
+    };
+  }, []);
+
+  return (
+    <section ref={sectionRef} className="container h-12 md:h-32">
+      <div className={`grid grid-cols-4 w-full mx-auto -translate-y-12 divde-x divide-blue-700 bg:yellow-600 place-self-center ${isDarkMode ? "bg-blue-950 dark:text-white/70" : "bg-yellow-700"} p-4 shadow-lg md:max-w-[800px] md:p-8 rounded-full`}>
+        <div className="flex flex-col items-center justify-center">
+          <h1 className={`text-sm font-bold text-black/80 ${isDarkMode ? "text-white" : ""} sm:text-lg md:text-3xl`}>
+            {isVisible ? <CountUp end={234} suffix="+" duration={2.75} /> : "0+"}
+          </h1>
+          <h1 className="sm:text-md font-bold md:text-lg">Clients</h1>
+        </div>
+
+        <div className="flex flex-col items-center justify-center">
+          <h1 className={`text-sm text-black/80 sm:text-lg md:text-3xl ${isDarkMode ? "text-white" : ""} font-bold`}>
+            {isVisible ? <CountUp end={57} suffix="+" duration={2.75} /> : "0+"}
+          </h1>
+          <h1 className="sm:text-md font-bold md:text-lg">Projects</h1>
+        </div>
+
+        <div className="flex flex-col items-center justify-center">
+          <h1 className={`text-sm text-black/80 ${isDarkMode ? "text-white" : ""} sm:text-lg md:text-3xl font-bold`}>
+            {isVisible ? <CountUp end={234} suffix="k+" duration={2.75} /> : "0k+"}
+          </h1>
+          <h1 className="font-bold sm:text-md text-xs md:text-lg">Subscribers</h1>
+        </div>
+
+        <div className="flex flex-col items-center justify-center">
+          <h1 className={`text-sm font-bold text-black/80 ${isDarkMode ? "text-white" : ""} sm:text-lg md:text-3xl`}>
+            {isVisible ? <CountUp start={-875.020} end={160527.012} duration={2.75} separator="" suffix="+" /> : "0+"}
+          </h1>
+          <h1 className="sm:text-md font-bold md:text-lg">Clients</h1>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Service;
