@@ -1,14 +1,23 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { Card, CardContent } from '@/components/ui/card';
+import student1 from '@/assets/student1.png';
+// import student2 from '@/assets/student2.jpg';
+import student3 from '@/assets/student3.png';
+import student4 from '@/assets/student4.png';
+import student5 from '@/assets/student5.png';
+import student6 from '@/assets/student6.png';
+
 
 // Sample images - replace with your actual imports
 const imageUrls = [
-  '/images/slide1.jpg',
-  '/images/slide2.jpg',
-  '/images/slide3.jpg',
-  '/images/slide4.jpg',
-  '/images/slide5.jpg',
+  student1,
+  student3,
+  student4,
+  student5,
+  student6,
+ 
+  
 ];
 
 const WhyUsSection = () => {

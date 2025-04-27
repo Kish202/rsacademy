@@ -6,10 +6,11 @@ import WhyUsSection from '@/components/WhyUs'
 import Service from '@/components/Service'
 import Footer from '@/components/Footer'
 import InstagramFeed from '@/components/InstagramFeed'
+import LoadingAnimation from '@/components/LoadingAnimation'
 function Home() {
   return (
     <div className="min-h-screen">
-     
+    
       <Header/>
     <HeroSection/>
    
@@ -17,7 +18,7 @@ function Home() {
     <Service/>
     <InstagramFeed/>
 
-    
+    <TestimonialSection/>
     <Footer/>
     </div>
   )

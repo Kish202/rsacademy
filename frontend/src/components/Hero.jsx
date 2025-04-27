@@ -4,7 +4,7 @@ import {
   CardContent,
 } from '@/components/ui/card';
 import second from '@/assets/secondpic.jpg';
-import { IoLogoGooglePlaystore } from "react-icons/io5";
+
 import { useTheme } from "../context/ThemeContext";
 import {FaGooglePlay} from 'react-icons/fa'
 
@@ -14,7 +14,7 @@ const HeroSection = () => {
   const [isHovered, setIsHovered] = useState(false);
   // Using CSS classes instead of state for hover effects is more reliable
   return (
-    <div className="w-full min-h-screen relative overflow-hidden">
+    <div className="w-full min-h-screen relative overflow-hidden pt-10 md:pt-16">
       
       {/* Background Elements */}
       <div className={`absolute top-1/4 left-1/4 w-64 h-64 rounded-full blur-3xl -z-10

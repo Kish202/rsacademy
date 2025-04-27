@@ -7,6 +7,7 @@ import {
   FaMobileAlt,
   FaArrowRight
 } from "react-icons/fa";
+import { ChevronUp } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 
 const FooterLinks = [
@@ -25,12 +26,39 @@ const FooterLinks = [
   {
     title: "Blog",
     link: "/#blog",
+ 
+  },
+];
+const FooterLinks2 = [
+  {
+    title: "Social Wings",
+    link: "/social-wing",
+  },
+  {
+    title: "Life Skills",
+    link: "/#life-skills",
+  },
+  {
+    title: "Career",
+    link: "/#contact",
+  },
+  {
+    title: "login",
+    link: "/#login",
+ 
   },
 ];
 
 function Footer() {
   const { theme } = useTheme();
   const isDarkMode = theme === 'dark';
+       {/* Back to top button */}
+     const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <div className={`mt-14 rounded-t-3xl flex justify-center relative overflow-hidden
@@ -53,7 +81,8 @@ function Footer() {
               ${isDarkMode 
                 ? 'bg-gradient-to-r from-pink-400 via-yellow-300 to-pink-300 bg-clip-text text-transparent' 
                 : 'bg-gradient-to-r from-blue-600 via-teal-500 to-green-500 bg-clip-text text-transparent'}`}>
-             Refining Skills
+           <a href="#home"> Refining Skills</a>
+            
             </h1>
             <p className={`text-sm ${isDarkMode ? 'text-blue-100/80' : 'text-blue-800/80'}`}>
               Discover your inner potential to innovate and create. 
@@ -152,7 +181,7 @@ function Footer() {
                   Resources
                 </h1>
                 <ul className="flex flex-col gap-3">
-                  {FooterLinks.map((link, index) => (
+                  {FooterLinks2.map((link, index) => (
                     <li key={index} className="transition-all duration-300 group">
                       <a 
                         href={link.link}
@@ -204,7 +233,32 @@ function Footer() {
               </div>
             </div>
           </div>
+      
+      
+          <div className="container mx-auto px-4 mb-3 mt-0 absolute bottom-10 left-1/2 transform -translate-x-1/2">
+        <div className="relative pt-8 pb-4 flex justify-center">
+          <button 
+            onClick={scrollToTop}
+            className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors bg-white/80 px-4 py-2 rounded-full shadow-md hover:shadow-lg border border-blue-100"
+          >
+            <ChevronUp size={18} />
+            <span className="font-medium">Back to top</span>
+          </button>
         </div>
+      </div>
+        </div>
+             {/* Back to top button */}
+      {/* <div className="container mx-auto px-4 mb-3 mt-0">
+        <div className="relative pt-8 pb-4 flex justify-center">
+          <button 
+            onClick={scrollToTop}
+            className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors bg-white/80 px-4 py-2 rounded-full shadow-md hover:shadow-lg border border-blue-100"
+          >
+            <ChevronUp size={18} />
+            <span className="font-medium">Back to top</span>
+          </button>
+        </div>
+      </div> */}
         
         {/* Copyright Section with Neuomorphic Divider */}
         <div className={`text-center py-4 relative
